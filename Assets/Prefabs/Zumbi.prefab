@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7733308979070547419}
   - component: {fileID: 546000741836476831}
   - component: {fileID: 5960436590388029087}
+  - component: {fileID: 8590439744668428365}
   m_Layer: 0
   m_Name: Zumbi
   m_TagString: Zumbi
@@ -97,8 +98,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.023202896, y: -0.08701038}
-  m_Radius: 0.8074367
+  m_Offset: {x: -0.023202896, y: -0.36333978}
+  m_Radius: 0.55127686
 --- !u!114 &5960436590388029087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +113,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7733308979070547419}
+  attackHitbox: {fileID: 6231226598494171185}
   anim: {fileID: 6705494637437395222}
-  player: {fileID: 0}
+  player: {fileID: 645069188193813981, guid: 5e44a5d2e05905446a6433e4e97bfdde, type: 3}
+--- !u!61 &8590439744668428365
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3640662295330868602}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.5635159}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.6219733, y: 0.7207571}
+  m_EdgeRadius: 0
 --- !u!1 &4328984787034887643
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +173,7 @@ GameObject:
   - component: {fileID: 8044429792111121828}
   - component: {fileID: 3825561632597506587}
   - component: {fileID: 6705494637437395222}
+  - component: {fileID: 8815482998885619586}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -224,6 +273,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8815482998885619586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4328984787034887643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858d075254246e243aa0e72240209711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackHitbox: {fileID: 6231226598494171185}
+  zumbi: {fileID: 5960436590388029087}
+  anim: {fileID: 6705494637437395222}
 --- !u!1 &6231226598494171185
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +355,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.060812056}
+  m_Offset: {x: 0, y: -0.05132523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -301,7 +365,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6219733, y: 0.8783759}
+  m_Size: {x: 1.6219733, y: 0.7757254}
   m_EdgeRadius: 0
 --- !u!114 &9131870974910726832
 MonoBehaviour:
@@ -315,5 +379,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61ba01c309a2bf4298388eaffd81111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   damage: 1

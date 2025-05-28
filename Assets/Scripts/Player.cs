@@ -1,37 +1,65 @@
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Teclas de movimento 
-    KeyCode up = KeyCode.W;
-    KeyCode down = KeyCode.S;
-    KeyCode left = KeyCode.A;
-    KeyCode right = KeyCode.D;
 
     [SerializeField] float speed = 300f;
-     Rigidbody2D rb;
+    [SerializeField] TextMeshProUGUI vidaTexto;
+    [SerializeField] Animator anim;
+    [SerializeField] Animator Feetanim;
+    [SerializeField] bala balaPrefab;
+    [SerializeField] Transform PontoTiro;
+    [SerializeField] timer timer;
+
+    Rigidbody2D rb;
 
     int vida = 100;
+    public bool atirando = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim.Play("Player Idle");
+        Feetanim.Play("Player feet idle");
     }
     void Update()
     {
+        
+        if (Input.GetMouseButtonDown(0))
+        { 
+            if (atirando == false)
+            {
+                shoot();
+            }
+        }
         MouseOrientation();
-       
+        vidaTexto.text = vida.ToString();
+
     }
     void FixedUpdate()
     {
         Movimentacao();
     }
 
+
     public void Movimentacao()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         rb.linearVelocity = input.normalized * speed * Time.fixedDeltaTime;
+
+        if(rb.linearVelocity.magnitude > 0)
+        {
+            anim.Play("Player move");
+            Feetanim.Play("player feet move");
+        }
+        else
+        {
+            anim.Play("Player Idle");
+            Feetanim.Play("Player feet idle");
+        }
+
     }
 
     void MouseOrientation()
@@ -44,9 +72,17 @@ public class Player : MonoBehaviour
         transform.up = direction; // faz com que o objeto  rotacione e aponte para a parte de cima do objeto 
     }
 
+
     public void levarDano(int dano)
     {
         vida -= dano;
     }
 
+    void shoot()
+    {
+        atirando = true;
+        timer.resetTimer();
+        Instantiate(balaPrefab, PontoTiro.position, PontoTiro.rotation);
+
+    }
 }

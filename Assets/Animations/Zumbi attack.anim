@@ -22,28 +22,28 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -9100353864003544650, guid: 356b5428154615b4d8724625d7a1d019, type: 3}
-    - time: 0.041666668
+    - time: 0.055555556
       value: {fileID: -5194345092009921713, guid: d44136feb1a51c84a80ae723cc6c604d, type: 3}
-    - time: 0.083333336
+    - time: 0.11111111
       value: {fileID: 1279332367437903916, guid: afef48f61d019b94eaa08bfc86f797fc, type: 3}
-    - time: 0.125
-      value: {fileID: -847190104488860157, guid: 2dd8889cf84a6f040ab7916ae446e668, type: 3}
     - time: 0.16666667
+      value: {fileID: -847190104488860157, guid: 2dd8889cf84a6f040ab7916ae446e668, type: 3}
+    - time: 0.22222222
       value: {fileID: 585903890114940956, guid: 84e1b1e178f11eb4a9491a11c578e4a5, type: 3}
-    - time: 0.20833333
+    - time: 0.2777778
       value: {fileID: -1300644611385598908, guid: c76a330bbbb703a4fa6dbbfddff503c2, type: 3}
-    - time: 0.25
-      value: {fileID: 1810397064996202243, guid: 7da4f5421c71e66419519e9fbe89d939, type: 3}
-    - time: 0.29166666
-      value: {fileID: 2578809312276398261, guid: 590b373d845c3784891e9053c76f31b0, type: 3}
     - time: 0.33333334
+      value: {fileID: 1810397064996202243, guid: 7da4f5421c71e66419519e9fbe89d939, type: 3}
+    - time: 0.3888889
+      value: {fileID: 2578809312276398261, guid: 590b373d845c3784891e9053c76f31b0, type: 3}
+    - time: 0.44444445
       value: {fileID: -35884371980262302, guid: da0b52a2b035e0a41a1b47738d6a3d8b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 24
+  m_SampleRate: 18
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -74,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.375
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -93,4 +93,25 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.2777778
+    functionName: enableAttackHitbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.3888889
+    functionName: disableAttackHitbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.44444445
+    functionName: resetar
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
