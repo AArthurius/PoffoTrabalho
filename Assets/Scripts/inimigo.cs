@@ -8,7 +8,7 @@ public class inimigo : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] bala balaPrefab;
     [SerializeField] Transform PontoTiro;
-
+    [SerializeField] timer timer1;
     [SerializeField] Vector2 target = Vector2.zero;
 
     GameObject player;
@@ -19,7 +19,6 @@ public class inimigo : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         anim.Play("Inimigo move");
-        attack();
     }
 
     private void Update()
@@ -66,7 +65,13 @@ public class inimigo : MonoBehaviour
 
     public void attack()
     {
+        timer1.resetTimer();
         Instantiate(balaPrefab, PontoTiro.position, PontoTiro.rotation);
+    }
+
+    public void kill()
+    {
+        Destroy(gameObject);
     }
 
 }

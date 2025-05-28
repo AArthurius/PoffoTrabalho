@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8314289193997553498}
   - component: {fileID: 1281651869638866921}
   - component: {fileID: 3641657566040955274}
+  - component: {fileID: 1090062340008898710}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Inimigo
@@ -79,7 +80,44 @@ MonoBehaviour:
   anim: {fileID: 3207473732466552341}
   balaPrefab: {fileID: -2734685534489656545, guid: 2f6c8ff6298875f48acd9bac2c8a957f, type: 3}
   PontoTiro: {fileID: 1244907985338957405}
+  timer1: {fileID: 7437486139456368836}
   target: {x: 0, y: 0}
+--- !u!58 &1090062340008898710
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645069188193813981}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.32689166}
+  m_Radius: 0.49009418
 --- !u!1 &1544916435494325754
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 8785952175301059597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.472, y: 1.226, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
