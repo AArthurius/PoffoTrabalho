@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 300f;
      Rigidbody2D rb;
 
+    int vida = 100;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +42,11 @@ public class Player : MonoBehaviour
         Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y); // cria um vetor apontando do Player para o Mouse
 
         transform.up = direction; // faz com que o objeto  rotacione e aponte para a parte de cima do objeto 
+    }
+
+    public void levarDano(int dano)
+    {
+        vida -= dano;
     }
 
 }

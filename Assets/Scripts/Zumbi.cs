@@ -4,19 +4,35 @@ public class Zumbi : MonoBehaviour
 {
 
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Animator anim;
 
+    Vector2 target = Vector2.zero;
 
-    GameObject player;
+    [SerializeField] GameObject player;
     int speed = 250;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        
     }
-    
-    void FixedUpdate()
+
+    private void Update()
     {
+        if (player != null)
+        {
+            transform.up = target;
+        }
+
+
+    }
+
+    void FixedUpdate()
+    { 
+        if (player != null){ 
         Mover(player.transform.position);
+        }
+    
     }
 
 
@@ -26,7 +42,7 @@ public class Zumbi : MonoBehaviour
 
         Vector2 dif = playerPos - pos;
 
-        Vector2 target = new Vector2 (dif.x, dif.y);
+        target = new Vector2 (dif.x, dif.y);
         target = target.normalized;
 
 
