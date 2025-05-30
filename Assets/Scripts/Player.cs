@@ -11,23 +11,26 @@ public class Player : MonoBehaviour
     [SerializeField] bala balaPrefab;
     [SerializeField] Transform PontoTiro;
     [SerializeField] timer timer;
+    [SerializeField] GameObject painel;
 
     Rigidbody2D rb;
 
+    bool vivo = true;
     int vida = 100;
     public bool atirando = false;
 
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody2D>();
         anim.Play("Player Idle");
         Feetanim.Play("Player feet idle");
     }
     void Update()
     {
-        
+
         if (Input.GetMouseButton(0))
-        { 
+        {
             if (atirando == false)
             {
                 shoot();
@@ -35,6 +38,11 @@ public class Player : MonoBehaviour
         }
         MouseOrientation();
         vidaTexto.text = vida.ToString();
+
+        if (vida <= 0)
+        {
+            gameOver();
+        }
 
     }
     void FixedUpdate()
@@ -64,6 +72,9 @@ public class Player : MonoBehaviour
 
     void MouseOrientation()
     {
+        if (vivo == false) { 
+            return; 
+        }
         Vector3 mousePos = Input.mousePosition; //  Passa pro Vetor a posição do mouse na cena.
         mousePos = Camera.main.ScreenToWorldPoint(mousePos); // Pega a posição do Mouse na camera
 
@@ -84,5 +95,13 @@ public class Player : MonoBehaviour
         timer.resetTimer();
         Instantiate(balaPrefab, PontoTiro.position, PontoTiro.rotation);
 
+    }
+
+    void gameOver()
+    {
+        vivo = false;
+        painel.SetActive(true);
+        Time.timeScale = 0;
+        gameObject.SetActive(false);
     }
 }
