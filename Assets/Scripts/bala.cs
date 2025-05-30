@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class bala : MonoBehaviour
 {
-    public float speed = 10f;
-    public float lifetime = 2f;
+    public float speed = 30f;
+    public float lifetime = 4f;
 
     int dano = 10;
     void Start()
@@ -31,6 +31,13 @@ public class bala : MonoBehaviour
             inimigo.kill();  // Dano que você quiser
             Destroy(gameObject);
             return;
+        }
+        Zumbi zumbi = collision.GetComponent<Zumbi>();
+        if (zumbi != null) {
+            zumbi.kill();  // Dano que você quiser
+            Destroy(gameObject);
+            return;
+
         }
     }
 }

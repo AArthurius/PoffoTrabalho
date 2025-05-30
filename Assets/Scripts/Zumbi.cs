@@ -67,4 +67,8 @@ public class Zumbi : MonoBehaviour
         anim.Play("attack");
     }
 
+    public void kill()
+    {
+        Destroy(gameObject);
+    }
 }
