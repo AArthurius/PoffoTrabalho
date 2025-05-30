@@ -6,7 +6,7 @@ public class timer : MonoBehaviour
     [SerializeField] Player player;
 
     public float InimigoTime = 3.0f;
-    public float PlayerTime = 0.3f;
+    public float PlayerTime = 0.2f;
 
     void Update()
     {

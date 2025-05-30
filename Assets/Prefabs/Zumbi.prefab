@@ -59,7 +59,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -98,8 +98,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.023202896, y: -0.36333978}
-  m_Radius: 0.55127686
+  m_Offset: {x: -0.023202896, y: -0.26296836}
+  m_Radius: 0.72635865
 --- !u!114 &5960436590388029087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   attackHitbox: {fileID: 6231226598494171185}
   anim: {fileID: 6705494637437395222}
   player: {fileID: 645069188193813981, guid: 5e44a5d2e05905446a6433e4e97bfdde, type: 3}
+  stop: 1
 --- !u!61 &8590439744668428365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -379,4 +380,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61ba01c309a2bf4298388eaffd81111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 10
