@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="23c06c7d-318e-4f5b-a662-3d98af25f77a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PoffoTrabalho/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PoffoTrabalho/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Zumbi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Zumbi.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuManger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

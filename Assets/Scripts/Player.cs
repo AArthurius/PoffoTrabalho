@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Windows;
@@ -5,6 +6,11 @@ using Input = UnityEngine.Input;
 
 public class Player : MonoBehaviour
 {
+    private class Wrapper
+    {
+        public int[] array;
+    }
+    
 
     [SerializeField] private float speed = 300f;
     [SerializeField] private TextMeshProUGUI vidaTexto;
@@ -18,21 +24,25 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private int vida = 100;
+    private int vida = 30;
     private bool vivo = true;
     public bool atirando = false;
     private int currentScore;
 
     public static Player instance { get; private set; }
-    private static int[] highScores = new int[10];
-    private static string highScoresSaveFilePath = Application.persistentDataPath + "/highscores.json";
+    private static int[] highScores;
+    private const string HIGH_SCORES_SAVE_FILE_PATH = "/highscores.json";
 
+    public static int[] getHighScores() => highScores;
+    
     private void Start()
     {
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+        
+        LoadHighScores();
         
         currentScore = 0;
         Time.timeScale = 1;
@@ -129,23 +139,50 @@ public class Player : MonoBehaviour
         {
             if (highScores[i] >= currentScore) continue;
             
-            if (i != highScores.Length - 1)
+            if (i != highScores.GetUpperBound(0))
             {
-                for (int j = highScores.Length - 1; j >= i; j--)
+                for (int j = highScores.GetUpperBound(0); j > i; j--)
                 {
-                    highScores[j - 1] = highScores[j];
+                    Debug.Log(j);
+                    highScores[j] = highScores[j - 1];
                 }
             }
-            
             highScores[i] = currentScore;
+            Debug.Log(highScores[i]);
+            break;
         }
         
-        string json = JsonUtility.ToJson(highScores);
-        System.IO.File.WriteAllText(highScoresSaveFilePath, json);
+        Wrapper wrapper = new Wrapper();
+        wrapper.array = highScores;
+        
+        string json = JsonUtility.ToJson(wrapper);
+        System.IO.File.WriteAllText(Application.persistentDataPath + HIGH_SCORES_SAVE_FILE_PATH, json);
+        Debug.Log(highScores);
+        Debug.Log(json);
+        Debug.Log("saved");
+    }
+
+    public static void LoadHighScores()
+    {
+        highScores = new int[10];
+        
+        if (File.Exists(Application.persistentDataPath + HIGH_SCORES_SAVE_FILE_PATH))
+        {
+            Wrapper wrapper = JsonUtility.FromJson<Wrapper>(System.IO.File.ReadAllText(Application.persistentDataPath + HIGH_SCORES_SAVE_FILE_PATH));
+
+            if (wrapper?.array == null) return;
+            
+            for (int i = 0; i < wrapper.array.Length; i++)
+            {
+                if (i >= 10) break;
+                highScores[i] = wrapper.array[i];
+            }
+        }
     }
 
     private void gameOver()
     {
+        SaveHighScores();
         vivo = false;
         painel.SetActive(true);
         Time.timeScale = 0;

@@ -1,10 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManger : MonoBehaviour
 {
     private bool paused = false;
-
+    
+    [SerializeField] private TextMeshProUGUI highScoreText;
 
     // Update is called once per frame
     private void Update()
@@ -32,5 +34,16 @@ public class MenuManger : MonoBehaviour
     public void menu()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void Start()
+    {
+        Player.LoadHighScores();
+        
+        if (highScoreText)
+            if (Player.getHighScores()[0] > 0)
+                highScoreText.text = string.Join("\n", Player.getHighScores());
+            else
+                highScoreText.text = "";
     }
 }
