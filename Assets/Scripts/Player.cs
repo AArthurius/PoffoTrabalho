@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 using Input = UnityEngine.Input;
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 300f;
     [SerializeField] private TextMeshProUGUI vidaTexto;
     [SerializeField] private TextMeshProUGUI scoreTexto;
+    [SerializeField] private Text top1Text;
     [SerializeField] private Animator anim;
     [SerializeField] private Animator feetanim;
     [SerializeField] private Bala balaPrefab;
@@ -185,6 +187,7 @@ public class Player : MonoBehaviour
 
     private void gameOver()
     {
+        top1Text.text = highScores[0].ToString();
         SaveHighScores();
         vivo = false;
         painel.SetActive(true);
