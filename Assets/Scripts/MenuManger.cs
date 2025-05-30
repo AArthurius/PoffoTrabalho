@@ -3,13 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuManger : MonoBehaviour
 {
-
-
-    bool paused = false;
+    private bool paused = false;
 
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false)
         {

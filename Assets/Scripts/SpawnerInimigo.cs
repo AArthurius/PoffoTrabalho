@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class SpawnerInimigo : MonoBehaviour
 {
-    [SerializeField] GameObject inimigo;
-    [SerializeField] GameObject zumbi;
-    
-    float spawnMin = 0.5f;
-    float spawnMax = 2f;
-    [SerializeField]  float tempo;
+    [SerializeField] private GameObject inimigo;
+    [SerializeField] private GameObject zumbi;
+
+    private float spawnMin = 0.5f;
+    private float spawnMax = 2f;
+    [SerializeField] private float tempo;
 
     
 
@@ -31,12 +31,12 @@ public class SpawnerInimigo : MonoBehaviour
 
     }
 
-    void spawnTimerReset()
+    private void spawnTimerReset()
     {
         tempo = Random.Range(spawnMin, spawnMax);
     }
 
-    void spawnEnemy()
+    private void spawnEnemy()
     {
         Vector2[] posArray = new Vector2[4];
         float rand = Random.Range(-14f, 14f);

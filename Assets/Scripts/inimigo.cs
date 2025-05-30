@@ -4,42 +4,40 @@ public class inimigo : MonoBehaviour
 {
 
 
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] Animator anim;
-    [SerializeField] bala balaPrefab;
-    [SerializeField] Transform PontoTiro;
-    [SerializeField] timer timer1;
-    [SerializeField] Vector2 target = Vector2.zero;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
+    [SerializeField] private bala balaPrefab;
+    [SerializeField] private Transform PontoTiro;
+    [SerializeField] private timer timer1;
+    [SerializeField] private Vector2 target = Vector2.zero;
 
-    GameObject player;
-    int speed = 150;
+    private int speed = 150;
 
 
-    void Start()
+    private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         anim.Play("Inimigo move");
     }
 
     private void Update()
     {
-        if (player != null)
+        if (Player.instance)
         {
             transform.up = target;
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (player != null)
+        if (Player.instance)
         {
-            Mover(player.transform.position);
+            Mover(Player.instance.transform.position);
         }
 
     }
 
 
-    void Mover(Vector2 playerPos)
+    private void Mover(Vector2 playerPos)
     {
         Vector2 pos = new Vector2(transform.position.x, transform.position.y);
 
@@ -50,7 +48,7 @@ public class inimigo : MonoBehaviour
         target = target.normalized;
 
 
-        rb.linearVelocity = target * speed * Time.fixedDeltaTime;
+        rb.linearVelocity = target * (speed * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,6 +69,7 @@ public class inimigo : MonoBehaviour
 
     public void kill()
     {
+        Player.instance.UpdateScore(10);
         Destroy(gameObject);
     }
 

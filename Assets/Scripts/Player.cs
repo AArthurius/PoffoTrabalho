@@ -4,26 +4,39 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] float speed = 300f;
-    [SerializeField] TextMeshProUGUI vidaTexto;
-    [SerializeField] Animator anim;
-    [SerializeField] Animator Feetanim;
-    [SerializeField] bala balaPrefab;
-    [SerializeField] Transform PontoTiro;
-    [SerializeField] timer timer;
+    [SerializeField] private float speed = 300f;
+    [SerializeField] private TextMeshProUGUI vidaTexto;
+    [SerializeField] private TextMeshProUGUI scoreTexto;
+    [SerializeField] private Animator anim;
+    [SerializeField] private Animator Feetanim;
+    [SerializeField] private bala balaPrefab;
+    [SerializeField] private Transform PontoTiro;
+    [SerializeField] private timer timer;
 
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    int vida = 100;
+    private int vida = 100;
     public bool atirando = false;
+    private int currentScore;
 
-    void Start()
+    public static Player instance { get; private set; }
+    private static int[] highScores = new int[10];
+
+    private void Start()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+        
+        currentScore = 0;
         rb = GetComponent<Rigidbody2D>();
         anim.Play("Player Idle");
         Feetanim.Play("Player feet idle");
+        scoreTexto.text = currentScore.ToString();
     }
-    void Update()
+
+    private void Update()
     {
         
         if (Input.GetMouseButton(0))
@@ -37,7 +50,8 @@ public class Player : MonoBehaviour
         vidaTexto.text = vida.ToString();
 
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         Movimentacao();
     }
@@ -62,10 +76,10 @@ public class Player : MonoBehaviour
 
     }
 
-    void MouseOrientation()
+    private void MouseOrientation()
     {
-        Vector3 mousePos = Input.mousePosition; //  Passa pro Vetor a posição do mouse na cena.
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos); // Pega a posição do Mouse na camera
+        Vector3 mousePos = Input.mousePosition; //  Passa pro Vetor a posiï¿½ï¿½o do mouse na cena.
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos); // Pega a posiï¿½ï¿½o do Mouse na camera
 
         Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y); // cria um vetor apontando do Player para o Mouse
 
@@ -78,11 +92,38 @@ public class Player : MonoBehaviour
         vida -= dano;
     }
 
-    void shoot()
+    private void shoot()
     {
         atirando = true;
         timer.resetTimer();
         Instantiate(balaPrefab, PontoTiro.position, PontoTiro.rotation);
 
+    }
+    
+    public void UpdateScore(int amount)
+    {
+        currentScore += amount;
+        scoreTexto.text = currentScore.ToString();
+    }
+
+    //Quando o GameOver for adicionado use essa funÃ§Ã£o para adicionar a pontuaÃ§Ã£o para o highScore, como ainda n temos
+    //menu ainda n fiz o texto do highScore, mas isso vai ser fÃ¡cil de fazer.
+    public void AddToHighScores()
+    {
+        //Um monte de maracutÃ¡ia pra n usar List<> pq Array Ã© mais eficiente
+        for(int i = 0; i < highScores.Length; i++)
+        {
+            if (highScores[i] >= currentScore) continue;
+            
+            if (i != highScores.Length - 1)
+            {
+                for (int j = highScores.Length - 1; j >= i; j--)
+                {
+                    highScores[j - 1] = highScores[j];
+                }
+            }
+            
+            highScores[i] = currentScore;
+        }
     }
 }

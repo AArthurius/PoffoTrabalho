@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class timer : MonoBehaviour
 {
-    [SerializeField] inimigo inimigo;
-    [SerializeField] Player player;
+    [SerializeField] private inimigo inimigo;
+    [SerializeField] private Player player;
 
     public float InimigoTime = 3.0f;
     public float PlayerTime = 0.2f;
 
-    void Update()
+    private void Update()
     {
 
         InimigoTime -= Time.deltaTime;
@@ -30,12 +30,12 @@ public class timer : MonoBehaviour
         PlayerTime = 0.3f;
     }
 
-    void timerEndedInimigo()
+    private void timerEndedInimigo()
     {
         if (inimigo != null) inimigo.attack();
     }
 
-    void timerEndedPlayer()
+    private void timerEndedPlayer()
     {
         if (player != null) player.atirando = false;
     }

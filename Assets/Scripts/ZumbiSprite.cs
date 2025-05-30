@@ -5,8 +5,8 @@ public class ZumbiSprite : MonoBehaviour
 
     public GameObject attackHitbox;
 
-    [SerializeField] Zumbi zumbi; 
-    [SerializeField] Animator anim;
+    [SerializeField] private Zumbi zumbi; 
+    [SerializeField] private Animator anim;
 
     public void enableAttackHitbox()
     {

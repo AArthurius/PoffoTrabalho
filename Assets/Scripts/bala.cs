@@ -5,13 +5,14 @@ public class bala : MonoBehaviour
     public float speed = 30f;
     public float lifetime = 4f;
 
-    int dano = 10;
-    void Start()
+    private int dano = 10;
+
+    private void Start()
     {
-        Destroy(gameObject, lifetime); // destrói a bala após X segundos
+        Destroy(gameObject, lifetime); // destrï¿½i a bala apï¿½s X segundos
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         transform.Translate(Vector3.up * speed * Time.fixedDeltaTime);
     }
@@ -21,20 +22,20 @@ public class bala : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            player.levarDano(dano);  // Dano que você quiser
+            player.levarDano(dano);  // Dano que vocï¿½ quiser
             Destroy(gameObject);
             return;
         }
         inimigo inimigo = collision.GetComponent<inimigo>();
         if (inimigo != null)
         {
-            inimigo.kill();  // Dano que você quiser
+            inimigo.kill();  // Dano que vocï¿½ quiser
             Destroy(gameObject);
             return;
         }
         Zumbi zumbi = collision.GetComponent<Zumbi>();
         if (zumbi != null) {
-            zumbi.kill();  // Dano que você quiser
+            zumbi.kill();  // Dano que vocï¿½ quiser
             Destroy(gameObject);
             return;
 
