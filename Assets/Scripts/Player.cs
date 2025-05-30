@@ -133,6 +133,9 @@ public class Player : MonoBehaviour
         scoreTexto.text = currentScore.ToString();
     }
 
+    /// <summary>
+    /// Salva o highscore num arquivo local além de adicionar a pontuação atual para o highscore e organizá-lo de forma decrescente
+    /// </summary>
     public void SaveHighScores()
     {
         //loopar pelo highscore
