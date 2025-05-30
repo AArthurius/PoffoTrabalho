@@ -6,8 +6,8 @@ public class Timer : MonoBehaviour
     [SerializeField] private Inimigo inimigo;
     [SerializeField] private Player player;
 
-    [FormerlySerializedAs("InimigoTime")] public float inimigoTime = 3.0f;
-    [FormerlySerializedAs("PlayerTime")] public float playerTime = 0.2f;
+     public float inimigoTime = 3.0f;
+     public float playerTime = 0.2f;
 
     private void Update()
     {

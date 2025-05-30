@@ -47,6 +47,7 @@ public class MenuManger : MonoBehaviour
                 int [] highScores = Player.getHighScores();
                 for (int i = 0; i < highScores.Length; i++)
                 {
+                    if (highScores[i] == 0) break;
                     text += $"{i+1}. {highScores[i]}\n";
                 }
                 highScoreText.text = text;
