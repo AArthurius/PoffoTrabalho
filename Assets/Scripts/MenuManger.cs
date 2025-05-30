@@ -42,7 +42,15 @@ public class MenuManger : MonoBehaviour
         
         if (highScoreText)
             if (Player.getHighScores()[0] > 0)
-                highScoreText.text = string.Join("\n", Player.getHighScores());
+            {
+                string text = "";
+                int [] highScores = Player.getHighScores();
+                for (int i = 0; i < highScores.Length; i++)
+                {
+                    text += $"{i+1}. {highScores[i]}\n";
+                }
+                highScoreText.text = text;
+            }
             else
                 highScoreText.text = "";
     }

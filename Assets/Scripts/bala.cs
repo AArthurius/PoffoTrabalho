@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class bala : MonoBehaviour
+public class Bala : MonoBehaviour
 {
     public float speed = 30f;
     public float lifetime = 4f;
@@ -26,7 +26,7 @@ public class bala : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        inimigo inimigo = collision.GetComponent<inimigo>();
+        Inimigo inimigo = collision.GetComponent<Inimigo>();
         if (inimigo != null)
         {
             inimigo.kill();  // Dano que voc� quiser

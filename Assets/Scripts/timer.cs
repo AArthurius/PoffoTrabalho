@@ -1,24 +1,25 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class timer : MonoBehaviour
+public class Timer : MonoBehaviour
 {
-    [SerializeField] private inimigo inimigo;
+    [SerializeField] private Inimigo inimigo;
     [SerializeField] private Player player;
 
-    public float InimigoTime = 3.0f;
-    public float PlayerTime = 0.2f;
+    [FormerlySerializedAs("InimigoTime")] public float inimigoTime = 3.0f;
+    [FormerlySerializedAs("PlayerTime")] public float playerTime = 0.2f;
 
     private void Update()
     {
 
-        InimigoTime -= Time.deltaTime;
-        PlayerTime -= Time.deltaTime;
+        inimigoTime -= Time.deltaTime;
+        playerTime -= Time.deltaTime;
 
-        if (InimigoTime <= 0.0f)
+        if (inimigoTime <= 0.0f)
         {
             timerEndedInimigo();
         }
-        if (PlayerTime <= 0.0f) { 
+        if (playerTime <= 0.0f) { 
             timerEndedPlayer(); 
         }
 
@@ -26,8 +27,8 @@ public class timer : MonoBehaviour
 
     public void resetTimer()
     {
-        InimigoTime = 3.0f;
-        PlayerTime = 0.3f;
+        inimigoTime = 3.0f;
+        playerTime = 0.3f;
     }
 
     private void timerEndedInimigo()

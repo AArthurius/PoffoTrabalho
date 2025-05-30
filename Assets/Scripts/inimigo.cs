@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class inimigo : MonoBehaviour
+public class Inimigo : MonoBehaviour
 {
 
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
-    [SerializeField] private bala balaPrefab;
-    [SerializeField] private Transform PontoTiro;
-    [SerializeField] private timer timer1;
+    [SerializeField] private Bala balaPrefab;
+    [SerializeField] private Transform pontoTiro;
+    [SerializeField] private Timer timer1;
     [SerializeField] private Vector2 target = Vector2.zero;
 
     private int speed = 150;
@@ -21,7 +22,7 @@ public class inimigo : MonoBehaviour
 
     private void Update()
     {
-        if (Player.instance)
+        if (Player.Instance)
         {
             transform.up = target;
         }
@@ -29,9 +30,9 @@ public class inimigo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Player.instance)
+        if (Player.Instance)
         {
-            Mover(Player.instance.transform.position);
+            Mover(Player.Instance.transform.position);
         }
 
     }
@@ -64,12 +65,12 @@ public class inimigo : MonoBehaviour
     public void attack()
     {
         timer1.resetTimer();
-        Instantiate(balaPrefab, PontoTiro.position, PontoTiro.rotation);
+        Instantiate(balaPrefab, pontoTiro.position, pontoTiro.rotation);
     }
 
     public void kill()
     {
-        Player.instance.UpdateScore(10);
+        Player.Instance.UpdateScore(10);
         Destroy(gameObject);
     }
 
