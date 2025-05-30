@@ -19,7 +19,7 @@ public class Zumbi : MonoBehaviour
 
     private void Update()
     {
-        if (Player.instance)
+        if (Player.Instance)
         {
             transform.up = target;
         }
@@ -29,8 +29,8 @@ public class Zumbi : MonoBehaviour
 
     private void FixedUpdate()
     { 
-        if (Player.instance){ 
-        Mover(Player.instance.transform.position);
+        if (Player.Instance){ 
+        Mover(Player.Instance.transform.position);
         }
     
     }
@@ -67,7 +67,7 @@ public class Zumbi : MonoBehaviour
 
     public void kill()
     {
-        Player.instance.UpdateScore(5);
+        Player.Instance.UpdateScore(5);
         Destroy(gameObject);
     }
 }

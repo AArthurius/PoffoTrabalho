@@ -1,6 +1,6 @@
-using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Windows;
 using Input = UnityEngine.Input;
 
@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     private class Wrapper
     {
-        public int[] array;
+        public int[] Array;
     }
     
 
@@ -16,20 +16,20 @@ public class Player : MonoBehaviour
     [SerializeField] private TextMeshProUGUI vidaTexto;
     [SerializeField] private TextMeshProUGUI scoreTexto;
     [SerializeField] private Animator anim;
-    [SerializeField] private Animator Feetanim;
-    [SerializeField] private bala balaPrefab;
-    [SerializeField] private Transform PontoTiro;
-    [SerializeField] private timer timer;
+    [SerializeField] private Animator feetanim;
+    [SerializeField] private Bala balaPrefab;
+    [SerializeField] private Transform pontoTiro;
+    [SerializeField] private Timer timer;
     [SerializeField] private GameObject painel;
 
     private Rigidbody2D rb;
 
-    private int vida = 30;
+    private int vida = 100;
     private bool vivo = true;
     public bool atirando = false;
     private int currentScore;
 
-    public static Player instance { get; private set; }
+    public static Player Instance { get; private set; } //por temos uma referência estática a esse script, podemos acessá-lo de qualquer lugar.
     private static int[] highScores;
     private const string HIGH_SCORES_SAVE_FILE_PATH = "/highscores.json";
 
@@ -37,9 +37,12 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
+        //essa classe é um singleton, apenas uma instância dela pode existir,
+        //para garantir isso guardamos a instância em uma variável estática e
+        //checamos se a instância atual é a instância guardada.
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
             Destroy(gameObject);
         
         LoadHighScores();
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
         rb = GetComponent<Rigidbody2D>();
         anim.Play("Player Idle");
-        Feetanim.Play("Player feet idle");
+        feetanim.Play("Player feet idle");
         scoreTexto.text = currentScore.ToString();
     }
 
@@ -87,12 +90,12 @@ public class Player : MonoBehaviour
         if(rb.linearVelocity.magnitude > 0)
         {
             anim.Play("Player move");
-            Feetanim.Play("player feet move");
+            feetanim.Play("player feet move");
         }
         else
         {
             anim.Play("Player Idle");
-            Feetanim.Play("Player feet idle");
+            feetanim.Play("Player feet idle");
         }
 
     }
@@ -120,7 +123,7 @@ public class Player : MonoBehaviour
     {
         atirando = true;
         timer.resetTimer();
-        Instantiate(balaPrefab, PontoTiro.position, PontoTiro.rotation);
+        Instantiate(balaPrefab, pontoTiro.position, pontoTiro.rotation);
 
     }
     
@@ -130,36 +133,32 @@ public class Player : MonoBehaviour
         scoreTexto.text = currentScore.ToString();
     }
 
-    //Quando o GameOver for adicionado use essa função para adicionar a pontuação para o highScore, como ainda n temos
-    //menu ainda n fiz o texto do highScore, mas isso vai ser fácil de fazer.
     public void SaveHighScores()
     {
-        //Um monte de maracutáia pra n usar List<> pq Array é mais eficiente
+        //loopar pelo highscore
         for(int i = 0; i < highScores.Length; i++)
         {
             if (highScores[i] >= currentScore) continue;
             
             if (i != highScores.GetUpperBound(0))
             {
+                //loopar pelo highscore do último ao primeiro, tornando o número atual igual ao próximo número
+                //basicamente movendo os números 1 para a direita
                 for (int j = highScores.GetUpperBound(0); j > i; j--)
                 {
-                    Debug.Log(j);
                     highScores[j] = highScores[j - 1];
                 }
             }
             highScores[i] = currentScore;
-            Debug.Log(highScores[i]);
-            break;
+            break; //já achamos a posição da pontuação atual, não há necessidade de loopar de novo
         }
-        
+        //o wrapper é uma classe apenas com um array int[], pois json não serializa int[]
         Wrapper wrapper = new Wrapper();
-        wrapper.array = highScores;
+        wrapper.Array = highScores;
         
+        //transforma o wrapper em um texto .json para que possa ser salvo
         string json = JsonUtility.ToJson(wrapper);
         System.IO.File.WriteAllText(Application.persistentDataPath + HIGH_SCORES_SAVE_FILE_PATH, json);
-        Debug.Log(highScores);
-        Debug.Log(json);
-        Debug.Log("saved");
     }
 
     public static void LoadHighScores()
@@ -170,12 +169,13 @@ public class Player : MonoBehaviour
         {
             Wrapper wrapper = JsonUtility.FromJson<Wrapper>(System.IO.File.ReadAllText(Application.persistentDataPath + HIGH_SCORES_SAVE_FILE_PATH));
 
-            if (wrapper?.array == null) return;
+            if (wrapper?.Array == null) return;
             
-            for (int i = 0; i < wrapper.array.Length; i++)
+            //se por algum motivo tiver mais números do que o necessário no wrapper esse for resolve isso
+            for (int i = 0; i < wrapper.Array.Length; i++)
             {
                 if (i >= 10) break;
-                highScores[i] = wrapper.array[i];
+                highScores[i] = wrapper.Array[i];
             }
         }
     }
