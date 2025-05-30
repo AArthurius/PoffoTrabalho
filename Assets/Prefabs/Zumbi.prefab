@@ -115,7 +115,6 @@ MonoBehaviour:
   rb: {fileID: 7733308979070547419}
   attackHitbox: {fileID: 6231226598494171185}
   anim: {fileID: 6705494637437395222}
-  player: {fileID: 645069188193813981, guid: 5e44a5d2e05905446a6433e4e97bfdde, type: 3}
   stop: 1
 --- !u!61 &8590439744668428365
 BoxCollider2D:

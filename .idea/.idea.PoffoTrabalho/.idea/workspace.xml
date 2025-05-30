@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23c06c7d-318e-4f5b-a662-3d98af25f77a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bala.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bala.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Inimigo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Inimigo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PoffoTrabalho/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PoffoTrabalho/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Zumbi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Zumbi.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuManger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnerInimigo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnerInimigo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Zumbi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Zumbi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZumbiSprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZumbiSprite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bala.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bala.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/inimigo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/inimigo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://S:/Unity Projects/PoffoTrabalho/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://S:/Unity Projects/PoffoTrabalho/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -39,19 +32,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.13f1\Editor\Unity.exe" />
@@ -106,6 +99,7 @@
       <updated>1748575343453</updated>
       <workItem from="1748575346248" duration="45000" />
       <workItem from="1748578969128" duration="1180000" />
+      <workItem from="1748629228015" duration="1294000" />
     </task>
     <servers />
   </component>

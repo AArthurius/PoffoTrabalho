@@ -159,6 +159,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 398984139208257012, guid: 5e44a5d2e05905446a6433e4e97bfdde, type: 3}
+      propertyPath: painel
+      value: 
+      objectReference: {fileID: 1695558956}
+    - target: {fileID: 398984139208257012, guid: 5e44a5d2e05905446a6433e4e97bfdde, type: 3}
       propertyPath: vidaTexto
       value: 
       objectReference: {fileID: 1982278464}
@@ -1747,7 +1751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1695558957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1936,7 +1940,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1944217337
 RectTransform:

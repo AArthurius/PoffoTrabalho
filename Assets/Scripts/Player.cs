@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Windows;
+using Input = UnityEngine.Input;
 
 public class Player : MonoBehaviour
 {
@@ -12,15 +14,18 @@ public class Player : MonoBehaviour
     [SerializeField] private bala balaPrefab;
     [SerializeField] private Transform PontoTiro;
     [SerializeField] private timer timer;
+    [SerializeField] private GameObject painel;
 
     private Rigidbody2D rb;
 
     private int vida = 100;
+    private bool vivo = true;
     public bool atirando = false;
     private int currentScore;
 
     public static Player instance { get; private set; }
     private static int[] highScores = new int[10];
+    private static string highScoresSaveFilePath = Application.persistentDataPath + "/highscores.json";
 
     private void Start()
     {
@@ -30,6 +35,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         
         currentScore = 0;
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody2D>();
         anim.Play("Player Idle");
         Feetanim.Play("Player feet idle");
@@ -49,6 +55,11 @@ public class Player : MonoBehaviour
         MouseOrientation();
         vidaTexto.text = vida.ToString();
 
+        if (vida <= 0)
+        {
+            gameOver();
+        }
+
     }
 
     private void FixedUpdate()
@@ -61,7 +72,7 @@ public class Player : MonoBehaviour
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        rb.linearVelocity = input.normalized * speed * Time.fixedDeltaTime;
+        rb.linearVelocity = input.normalized * (speed * Time.fixedDeltaTime);
 
         if(rb.linearVelocity.magnitude > 0)
         {
@@ -78,6 +89,9 @@ public class Player : MonoBehaviour
 
     private void MouseOrientation()
     {
+        if (vivo == false) { 
+            return; 
+        }
         Vector3 mousePos = Input.mousePosition; //  Passa pro Vetor a posi��o do mouse na cena.
         mousePos = Camera.main.ScreenToWorldPoint(mousePos); // Pega a posi��o do Mouse na camera
 
@@ -108,7 +122,7 @@ public class Player : MonoBehaviour
 
     //Quando o GameOver for adicionado use essa função para adicionar a pontuação para o highScore, como ainda n temos
     //menu ainda n fiz o texto do highScore, mas isso vai ser fácil de fazer.
-    public void AddToHighScores()
+    public void SaveHighScores()
     {
         //Um monte de maracutáia pra n usar List<> pq Array é mais eficiente
         for(int i = 0; i < highScores.Length; i++)
@@ -125,5 +139,16 @@ public class Player : MonoBehaviour
             
             highScores[i] = currentScore;
         }
+        
+        string json = JsonUtility.ToJson(highScores);
+        System.IO.File.WriteAllText(highScoresSaveFilePath, json);
+    }
+
+    private void gameOver()
+    {
+        vivo = false;
+        painel.SetActive(true);
+        Time.timeScale = 0;
+        gameObject.SetActive(false);
     }
 }
